@@ -31,19 +31,35 @@ router.get('/', async (req, res) => {
 
 // get one product
 router.get('/:id', async (req, res) => {
-  const productData = await Product.findbyPk(req.params.id, {
+  try {
+    const productData = await Product.findbyPk({
+    where: {
+    id: req.params.id, 
+    },
+  
     include: [
       {
         model: Tag,
       },
-      { model: Category }
+      { 
+        model: Category 
+      },
 
     ]
-  })
+  
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
 });
+if (!productData) {
+  res.status(404).json({ message: 'Product cannot be found' });
+  return;
+}
 
+res.status(200).json(productData);
+} catch (err) {
+res.status(500).json(err);
+}
+});
 // create new product
 router.post('/', (req, res) => {
   /* req.body should look like this...
