@@ -7,7 +7,7 @@ store so i am up to date with my inventory.
 
 ## Description
 
-For this challenge we are assigned to build an e-commerce back end using Express.js and MySQL.
+For this challenge we are assigned to build an e-commerce back end for a website using Express.js and MySQL.
 
 ## Technologies
 
